@@ -1,0 +1,8 @@
+cloud9:
+  command: "--listen 0.0.0.0 -p 8080 -w /workspace -a :"
+  image: "damnhandy/cloud9-sdk"
+  restart: "always"
+  volumes:
+    - "/var/run/docker.sock:/var/run/docker.sock"
+    - "/usr/local/bin/docker:/bin/docker"
+    - "./myworkspace:/workspace"
