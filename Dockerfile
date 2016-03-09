@@ -19,6 +19,5 @@ VOLUME ["/workspace"]
 
 EXPOSE 8080
 
-# Start supervisor, define default command.
 ENTRYPOINT ["/usr/local/bin/node", "server.js"]
 CMD ["--listen 0.0.0.0 -p 8080 -w /workspace"]
