@@ -1,5 +1,6 @@
-FROM node:5.7.1-slim
-MAINTAINER Ryan J. McDonough "ryan@damnhandy.com"
+FROM node:5.12-slim
+#MAINTAINER Ryan J. McDonough "ryan@damnhandy.com"
+MAINTAINER Raul Sanchez <rawmind@gmail.com>
 
 ENV SERVICE_HOME=/opt/cloud9 \
     SERVICE_URL=https://github.com/c9/core.git \
@@ -7,7 +8,7 @@ ENV SERVICE_HOME=/opt/cloud9 \
 
 RUN mkdir -p $SERVICE_HOME $SERVICE_WORK && \
     apt-get update && \
-    apt-get install -y python build-essential g++ libssl-dev apache2-utils git libxml2-dev sshfs && \
+    apt-get install -y python build-essential g++ libssl-dev apache2-utils git libxml2-dev && \
     git clone $SERVICE_URL $SERVICE_HOME && \
     cd $SERVICE_HOME && \
     scripts/install-sdk.sh && \
