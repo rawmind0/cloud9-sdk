@@ -1,9 +1,8 @@
 #!/usr/bin/env sh
 
-cd $SERVICE_HOME
-
 if [ "x$GIT_REPO" != "x" ]; then
+	cd $SERVICE_WORK
 	git clone $GIT_REPO
 fi
 
-/usr/local/bin/node server.js $@
+cd $SERVICE_HOME && /usr/local/bin/node server.js $@
