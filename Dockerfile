@@ -15,12 +15,12 @@ RUN apt-get update && \
     mkdir /workspace
 
 ADD root /
-RUN chmod +x /*.sh 
+RUN chmod +x /tmp/*.sh 
 
 VOLUME $SERVICE_HOME
 WORKDIR $SERVICE_HOME
 
 EXPOSE 8080
 
-ENTRYPOINT ["/start.sh"]
+ENTRYPOINT ["/tmp/start.sh"]
 CMD ["--listen 0.0.0.0 -p 8080 -w $SERVICE_HOME"]
