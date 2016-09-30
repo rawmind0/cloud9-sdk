@@ -17,7 +17,6 @@ RUN apt-get update && \
 ADD root /
 RUN chmod +x /tmp/*.sh 
 
-VOLUME $SERVICE_HOME
 WORKDIR $SERVICE_HOME
 
 EXPOSE 8080
