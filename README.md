@@ -1,28 +1,37 @@
-# Cloud9 SDK Docker Container
+[![](https://images.microbadger.com/badges/image/rawmind/cloud9-sdk.svg)](https://microbadger.com/images/rawmind/cloud9-sdk "Get your own image badge on microbadger.com")
 
-This is a docker container that can executes the Cloud9 SDK.
+cloud9-sdk
+==============
 
-## Usage
+This image is the cloud9-sdk base. 
 
-You can run either:
+## Build
 
-    docker run -d -v $(pwd):/workspace  -p 8080:8080 damnhandy/cloud9-sdk --listen 0.0.0.0 -p 8080 -w /workspace
+```
+docker build -t rawmind/cloud9-sdk:<version> .
+```
 
-If you're running this on a remote environment, you probabaly want to set a username and password by passing the `-a` or the `--auth` flag. The container exposes `/cloud9/server.js` and the **ENTRYPOINT** and it will accept all of the same arguments as described in the [Cloud9 SDK documentation](https://cloud9-sdk.readme.io/v0.1/docs/running-the-sdk). Please check there for those details.
+## Versions
 
-A slightly more complicated setup so you can run docker as well:
+- `0.3.0-2` [(Dockerfile)](https://github.com/rawmind0/cloud9-sdk/blob/0.3.0-2/Dockerfile)
 
-    docker run -d -v $(pwd):/workspace \
-        -v /var/run/docker.sock:/var/run/docker.sock \
-        -v $(which docker):/bin/docker -p 8080:8080 \
-        damnhandy/cloud9-sdk --listen 0.0.0.0 -p 8080 -w /workspace -a ${USER}:${PASS}
+## Configuration
 
-This will allow you to run docker commands on the host socket from within the Cloud9 SDK container.
+This image runs [cloud9-sdk][cloud9-sdk]. 
 
-Or you can modify the Docker compose file and to suit your needs and run:
+Besides, you can customize the configuration in several ways:
 
-    docker-compose up
+### Default Configuration
 
-Once running, you can point your browser to http://192.168.99.100:8080.
+Cloud9 is installed with the default configuration and some parameters can be overrided with env variables:
+
+- GIT_REPO=""	# Optional: Git repo to sync in your environment
 
 
+## Example
+
+See [rancher-example][rancher-example], rancher catalog package that runs zookeeper in a cattle environment with dynamic configuration.
+
+
+[cloud9-sdk]: https://cloud9-sdk.readme.io/
+[rancher-example]: https://github.com/rawmind0/cloud9-sdk/tree/master/rancher
